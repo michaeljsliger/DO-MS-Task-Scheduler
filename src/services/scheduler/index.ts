@@ -7,6 +7,8 @@ const app = express();
 
 // Get all scheduled tasks
 app.get('/tasks', async (req: Request, res: Response) => {
+    const timestamp = new Date().toISOString();
+    console.log(`${timestamp}] - API GATEWAY: GET Request received at api/tasks`)
     // Get all non-executed, future tasks?
     const tasks = DB.tasks
     res.send(tasks);
@@ -20,6 +22,8 @@ req.body = {
 }
 */
 app.post('/tasks/reschedule', (req: Request, res: Response) => {
+    const timestamp = new Date().toISOString();
+    console.log(`${timestamp}] - API GATEWAY: POST Request received at api/tasks/reschedule`)
     const taskId = req.body.id;
     const newTime = req.body.time
     if (!taskId) {
@@ -43,6 +47,8 @@ app.post('/tasks/reschedule', (req: Request, res: Response) => {
 
 // or app.delete('/tasks/{id}'), but I decided to use .post to keep the API consistent
 app.post('/tasks/delete', (req: Request, res: Response) => {
+    const timestamp = new Date().toISOString();
+    console.log(`${timestamp}] - API GATEWAY: POST Request received at api/tasks/delete`)
     const taskId = req.body.id;
     if (!taskId) {
         return res.status(400).send('Bad Request: ID field cannot be empty.')
@@ -68,6 +74,8 @@ app.post('/tasks/delete', (req: Request, res: Response) => {
 
 // One-time task registration
 app.post('/tasks/single', async (req: Request, res: Response) => {
+    const timestamp = new Date().toISOString();
+    console.log(`${timestamp}] - API GATEWAY: POST Request received at api/tasks/single`)
     // Validate request body
     if (req.body.time == '' || req.body.time == undefined) {
         return res.status(400).send('Bad Request: Assigned "time" field must not be empty.')
@@ -75,13 +83,14 @@ app.post('/tasks/single', async (req: Request, res: Response) => {
     if (req.body.task == '' || req.body.task == undefined) {
         return res.status(400).send('Bad Request: Assigned "task" field must not be empty.')
     }
+    const time = new Date(req.body.time);
 
     const newTask = {
         id: DB.idCounter++,
         type: 'single',
         cronTime: undefined, // Ignoring req.body.cronTime
         executed: false,
-        time: req.body.time,
+        time: time,
         task: req.body.task,
     }
 
@@ -92,6 +101,8 @@ app.post('/tasks/single', async (req: Request, res: Response) => {
 
 // Recurring task registration
 app.post('/tasks/recurring', async (req: Request, res: Response) => {
+    const timestamp = new Date().toISOString();
+    console.log(`${timestamp}] - API GATEWAY: POST Request received at api/tasks/recurring`)
     // Validate request body
     if (req.body.cronTime == '' || req.body.cronTime == undefined) {
         return res.status(400).send('Bad Request: Assigned "cronTime" field must not be empty.')
@@ -107,7 +118,8 @@ app.post('/tasks/recurring', async (req: Request, res: Response) => {
     const newTask = {
         id: DB.idCounter++,
         type: 'single',
-        cronTime: req.body.cronTime, 
+        cronTime: req.body.cronTime,
+        cronScheduled: false, 
         executed: false,
         time: undefined, // Ignoring req.body.time for recurring tasks
         task: req.body.task,

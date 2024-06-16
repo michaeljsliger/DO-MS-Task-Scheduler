@@ -1,3 +1,14 @@
+# USAGE
+
+From project root, run `npm install` and to launch the service use the below command
+```
+ts-node-esm ./src/app.ts
+```
+
+To run the script to seed the single events, in another cmd/process/bash/etc. run the following command
+```
+node create_tasks.ts
+```
 
 # Considerations
 
@@ -7,13 +18,12 @@ for real-world use would utilize a DB rather than caching to better scale.
 
 # TODO
 
-Mock DB queries
-Task Execution
-Init ui and server with one command
+Mock DB queries x
+Task Execution x
 
 Extra Credit:
-Task Cleanup
-Current scheduled tasks
-Edit task
-Delete task
+Task Cleanup x
+Current scheduled tasks x
+Edit task x
+Delete task x
 

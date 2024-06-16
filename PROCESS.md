@@ -28,3 +28,9 @@ cd ../../
 touch database.ts
 touch app.ts
 ```
+
+4) Write out API Gateway
+
+5) Write out Executor
+
+6) Write out Shell Script/Node TS script to seed tasks

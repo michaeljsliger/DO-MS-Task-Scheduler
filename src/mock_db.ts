@@ -8,8 +8,9 @@ caching to better scale.
 type Task = {
     id: number;
     type: string; // 'single' or 'recurring'
-    time?: string;
+    time?: Date;
     cronTime?: string; // Only used for recurring tasks
+    cronScheduled?: boolean; // Only used for recurring tasks
     task: string;
     executed: boolean;
 };
