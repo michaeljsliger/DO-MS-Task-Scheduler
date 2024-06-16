@@ -20,3 +20,5 @@ I did not complete the UI as I've already spent enough time on this project thus
 The UI would be a simple addition with a handful of components and some communication with the API gateway.
 
 In lieu of the UI, I added an easily runnable script that seeds tasks: `create_tasks.sh` and `create_tasks.ts`
+
+Thanks for reading. Cool challenge.
