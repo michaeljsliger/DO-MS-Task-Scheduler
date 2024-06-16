@@ -7,9 +7,9 @@ caching to better scale.
 
 type Task = {
     id: number;
-    type: 'one-time' | 'recurring';
+    type: string; // 'single' or 'recurring'
     time?: string;
-    cronTime?: string;
+    cronTime?: string; // Only used for recurring tasks
     task: string;
     executed: boolean;
 };
@@ -21,7 +21,4 @@ let data = {
     tasks, idCounter
 }
 
-export {
-    data,
-    Task
-}
+export default data

@@ -17,7 +17,7 @@ app.use('/api', schedulerApp);
 
 // Start the API Scheduler server
 app.listen(PORT, () => {
-  console.log(`API Scheduler running on port ${PORT}`);
+  console.log(`API Gateway running on http://localhost:${PORT}`);
 });
 
 // Initialize the task executor

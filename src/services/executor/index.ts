@@ -36,4 +36,8 @@ const initTaskExecutor = async () => {
   startPolling();
 };
 
+const taskCleanup = async () => {
+    // Remove the executed non-recurring tasks from the cache
+}
+
 export default initTaskExecutor;
