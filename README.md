@@ -16,14 +16,7 @@ The choice to use a mock DB is specifically to keep
 this project brief and portable. Any system designed
 for real-world use would utilize a DB rather than caching to better scale.
 
-# TODO
+I did not complete the UI as I've already spent enough time on this project thus far. 
+The UI would be a simple addition with a handful of components and some communication with the API gateway.
 
-Mock DB queries x
-Task Execution x
-
-Extra Credit:
-Task Cleanup x
-Current scheduled tasks x
-Edit task x
-Delete task x
-
+In lieu of the UI, I added an easily runnable script that seeds tasks: `create_tasks.sh` and `create_tasks.ts`
